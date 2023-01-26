@@ -1,5 +1,12 @@
 package clases;
 
-public class Libro {
+import java.util.Scanner;
 
+public class Libro {
+	
+
+	public Libro() {
+		
+	}
+	
 }
