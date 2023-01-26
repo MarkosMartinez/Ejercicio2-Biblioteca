@@ -1,16 +1,19 @@
 package clases;
 
-//import java.sql.PreparedStatement;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class GestorBBDD {
 	
 	Conector conector = new Conector();
 	
-	public void insertarLibro(String Libro) {
+	public void insertarLibro(Libro libro) throws SQLException {
 		conector.conectar();
-//		PreparedStatement insertar = conector.prepareStatement("INSERT INTO arboles (titulo) VALUES (?);");
-//		insertar.setString(1, Libro.getTitulo());
-//		insertar.execute();
+		PreparedStatement insertar = conector.getCon().prepareStatement("INSERT INTO libros (titulo, autor, num_pag) VALUES (?,?,?);");
+		insertar.setString(1, libro.getTitulo());
+		insertar.setString(2, libro.getAutor());
+		insertar.setInt(3, libro.getNum_pag());
+		insertar.execute();
 		conector.cerrar();
 		
 	}
