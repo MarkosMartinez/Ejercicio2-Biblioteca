@@ -14,12 +14,14 @@ public class GestorBBDD {
 		insertar.setString(2, libro.getAutor());
 		insertar.setInt(3, libro.getNum_pag());
 		insertar.execute();
-		conector.cerrar();
-		
+		conector.cerrar();	
 	}
 	
-	public void eliminarLibro(String Libro) {
+	public void eliminarLibro(int id) throws SQLException {
 		conector.conectar();
+		PreparedStatement insertar = conector.getCon().prepareStatement("DELETE FROM arboles WHERE id = ?;");
+		insertar.setInt(1, id);
+		insertar.execute();
 		
 		
 		
