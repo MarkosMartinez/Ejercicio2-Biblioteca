@@ -29,7 +29,7 @@ public class GestorBBDD {
 	}
 	
 	public Libro getLibro(int id) {
-		
+		//TODO ver como hacer que consiga el libro
 		return null;
 	}
 

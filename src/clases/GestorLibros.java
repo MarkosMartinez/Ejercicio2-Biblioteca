@@ -15,16 +15,15 @@ public class GestorLibros {
 			switch (opcion) {
 			case Menu.INSERTAR_LIBRO:
 				FormularioDeDatos.pedirDatosLibro(scan);
-				//TODO Lo pide pero falta hacer algo con el. Y mirar si pide bien los datos-
+				//TODO Lo pide pero falta hacer algo con el. Y mirar si pide bien los datos.
 				
 				break;
 			case Menu.ELIMINAR_LIBRO:
-				//TODO
+				//TODO Existe esto o es modificar libro?
 				
 				break;
 			case Menu.VER_LIBROS:
-				
-				//TODO
+				//TODO como hacer para mostrar los libroS (con Visor.mostrarLibro();?)
 				
 				break;
 			default:

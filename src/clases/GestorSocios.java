@@ -15,7 +15,7 @@ public class GestorSocios {
 			switch (opcion) {
 			case Menu.VER_SOCIOS:
 				
-				//TODO
+				//TODO Como hacer para ver los socios
 				
 				break;
 			default:

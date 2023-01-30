@@ -28,8 +28,8 @@ public class FormularioDeDatos {
 		return libro;
 	}
 	
-	public static int pedirIdLibro(Scanner scan) { //Mirar si esta bien
-		
+	public static int pedirIdLibro(Scanner scan) {
+		//TODO Mirar si esta bien.
 		System.out.println("Escribe el id del libro que quieres pedir: ");
 		int id = Integer.parseInt(scan.nextLine());
 		
