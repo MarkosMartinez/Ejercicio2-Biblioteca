@@ -19,7 +19,7 @@ public class GestorBBDD {
 	
 	public void eliminarLibro(int id) throws SQLException {
 		conector.conectar();
-		PreparedStatement insertar = conector.getCon().prepareStatement("DELETE FROM arboles WHERE id = ?;");
+		PreparedStatement insertar = conector.getCon().prepareStatement("DELETE FROM libros WHERE id = ?;");
 		insertar.setInt(1, id);
 		insertar.execute();
 		
