@@ -1,10 +1,11 @@
 package clases;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class GestorLibros {
 
-	public void run(Scanner scan){
+	public void run(Scanner scan) throws SQLException{
 		
 		int opcion;
 		boolean opcionvalida = false;
@@ -19,7 +20,10 @@ public class GestorLibros {
 				
 				break;
 			case Menu.ELIMINAR_LIBRO:
-				//TODO Existe esto o es modificar libro?
+				System.out.println("Escribe el ID del libro que quieres eliminar: ");
+				GestorBBDD gestorbbdd = new GestorBBDD(); //Ver si haciendo un objeto o cambiando GestorBBDD.java a static (mas facil)
+				gestorbbdd.eliminarLibro(0);
+				//TODO Desde GestorBBDD y para que existe modificar libro?
 				
 				break;
 			case Menu.VER_LIBROS:

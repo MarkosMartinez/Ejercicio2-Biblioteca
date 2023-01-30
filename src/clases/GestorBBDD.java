@@ -8,6 +8,7 @@ public class GestorBBDD {
 	Conector conector = new Conector();
 	
 	public void insertarLibro(Libro libro) throws SQLException {
+		//TODO ver si los datos que inserta estan bien o los tiene que pedir en FormularioDeDatos.java
 		conector.conectar();
 		PreparedStatement insertar = conector.getCon().prepareStatement("INSERT INTO libros (titulo, autor, num_pag) VALUES (?,?,?);");
 		insertar.setString(1, libro.getTitulo());
