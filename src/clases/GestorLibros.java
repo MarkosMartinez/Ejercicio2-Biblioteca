@@ -9,21 +9,20 @@ public class GestorLibros {
 		int opcion;
 		boolean opcionvalida = false;
 		do {
-			Menu.mostrarMenuSocios();
+			Menu.mostrarMenuLibros();
 			opcion = Integer.parseInt(scan.nextLine());
 			
 			switch (opcion) {
-			case Menu.GESTIONAR_LIBROS:
+			case Menu.INSERTAR_LIBRO:
+				FormularioDeDatos.pedirDatosLibro(scan);
+				//TODO Lo pide pero falta hacer algo con el. Y mirar si pide bien los datos-
 				
+				break;
+			case Menu.ELIMINAR_LIBRO:
 				//TODO
 				
 				break;
-			case Menu.GESTIONAR_SOCIOS:
-				
-				//TODO
-				
-				break;
-			case Menu.GESTIONAR_PRESTAMOS:
+			case Menu.VER_LIBROS:
 				
 				//TODO
 				
