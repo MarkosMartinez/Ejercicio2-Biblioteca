@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 public class GestorSocios {
 	
-	public void run(Scanner scan){
+	public static void run(Scanner scan){
 		
 		int opcion;
-		boolean opcionvalida = false;
 		do {
 			Menu.mostrarMenuSocios();
 			opcion = Integer.parseInt(scan.nextLine());
@@ -18,12 +17,14 @@ public class GestorSocios {
 				//TODO Como hacer para ver los socios
 				
 				break;
+			case Menu.SALIR:
+				break;
 			default:
 				System.out.println("Opcion no valida!\nIntentalo de nuevo.");
 				break;
 			}
 			
-		}while(!opcionvalida);
+		}while(opcion != 0);
 		
 		
 	}

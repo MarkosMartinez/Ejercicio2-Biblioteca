@@ -1,8 +1,9 @@
 package clases;
 
+import java.sql.SQLException;
+
 public class Main {
-	public static void main(String[] args) {
-		GestorBiblioteca gb = new GestorBiblioteca();
-		gb.run();
+	public static void main(String[] args) throws SQLException {
+		new GestorBiblioteca().run();
 	}
 }

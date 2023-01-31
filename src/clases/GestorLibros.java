@@ -5,39 +5,54 @@ import java.util.Scanner;
 
 public class GestorLibros {
 
-	public void run(Scanner scan) throws SQLException{
+	public static void run(Scanner scan) throws SQLException{
 		
 		int opcion;
-		boolean opcionvalida = false;
+		GestorBBDD gestorbbdd = new GestorBBDD();
+		
 		do {
 			Menu.mostrarMenuLibros();
 			opcion = Integer.parseInt(scan.nextLine());
 			
 			switch (opcion) {
 			case Menu.INSERTAR_LIBRO:
-				GestorBBDD gestorbbddinsert = new GestorBBDD();
-				gestorbbddinsert.insertarLibro(FormularioDeDatos.pedirDatosLibro(scan));
-				//TODO Mirar si esto esta bien
+				Libro libro = FormularioDeDatos.pedirDatosLibro(scan);
+				gestorbbdd.conector.conectar();
+				gestorbbdd.insertarLibro(libro);
+				gestorbbdd.conector.cerrar();
+				System.out.println("Libro insertado!");
 				
 				break;
 			case Menu.ELIMINAR_LIBRO:
 				System.out.println("Escribe el ID del libro que quieres eliminar: ");
 				int idDelete = Integer.parseInt(scan.nextLine());
-				GestorBBDD gestorbbdddelete = new GestorBBDD();
-				gestorbbdddelete.eliminarLibro(idDelete);
-				//TODO Mirar si esto esta bien
+				gestorbbdd.eliminarLibro(idDelete);
+				System.out.println("Libro eliminado!");
 				
 				break;
-			case Menu.VER_LIBROS:
-				//TODO como hacer para mostrar los libroS (con Visor.mostrarLibro();?)
+			case Menu.MODIFICAR_LIBROS: //Ver o Modificar?
 				
+				//TODO Crear esto
+			
+				
+				break;
+			case Menu.VER_LIBROS: //Ver o Modificar?
+				
+				//TODO como hacer para mostrar los libroS (con Visor.mostrarLibro();?)
+				//conectar
+				//arraylist<Libro> libros = gestorbbdd.getlibros();
+				//cerrar
+				//visor mostarlibros
+				
+				break;
+			case Menu.SALIR:
 				break;
 			default:
 				System.out.println("Opcion no valida!\nIntentalo de nuevo.");
 				break;
 			}
 			
-		}while(!opcionvalida);
+		}while(opcion != 0);
 		
 		
 	}
