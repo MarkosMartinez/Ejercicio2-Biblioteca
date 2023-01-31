@@ -2,6 +2,9 @@ package clases;
 
 public class Menu {
 	
+	//Salir
+	public static final int SALIR = 0;
+	
 	//mostrarMenuPrincipal
 	public static final int GESTIONAR_LIBROS = 1;
 	public static final int GESTIONAR_SOCIOS = 2;
@@ -15,7 +18,7 @@ public class Menu {
 	//mostrarMenuSocios
 	public static final int VER_SOCIOS = 1;
 	
-	//enuPrestamos
+	//menuPrestamos
 	public static final int REALIZAR_PRESTAMO = 1;
 
 	
@@ -31,7 +34,7 @@ public class Menu {
 	System.out.println("1.- Ver Socios");
 	}
 	
-	public static void enuPrestamos() {
+	public static void menuPrestamos() {
 		System.out.println("1.- Realizar préstamo.");
 	}
 

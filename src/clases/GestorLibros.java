@@ -15,15 +15,17 @@ public class GestorLibros {
 			
 			switch (opcion) {
 			case Menu.INSERTAR_LIBRO:
-				FormularioDeDatos.pedirDatosLibro(scan);
-				//TODO Lo pide pero falta hacer algo con el. Y mirar si pide bien los datos.
+				GestorBBDD gestorbbddinsert = new GestorBBDD();
+				gestorbbddinsert.insertarLibro(FormularioDeDatos.pedirDatosLibro(scan));
+				//TODO Mirar si esto esta bien
 				
 				break;
 			case Menu.ELIMINAR_LIBRO:
 				System.out.println("Escribe el ID del libro que quieres eliminar: ");
-				GestorBBDD gestorbbdd = new GestorBBDD(); //Ver si haciendo un objeto o cambiando GestorBBDD.java a static (mas facil)
-				gestorbbdd.eliminarLibro(0);
-				//TODO Desde GestorBBDD y para que existe modificar libro?
+				int idDelete = Integer.parseInt(scan.nextLine());
+				GestorBBDD gestorbbdddelete = new GestorBBDD();
+				gestorbbdddelete.eliminarLibro(idDelete);
+				//TODO Mirar si esto esta bien
 				
 				break;
 			case Menu.VER_LIBROS:

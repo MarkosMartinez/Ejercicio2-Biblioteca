@@ -1,6 +1,7 @@
 package clases;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class GestorBBDD {
@@ -8,7 +9,6 @@ public class GestorBBDD {
 	Conector conector = new Conector();
 	
 	public void insertarLibro(Libro libro) throws SQLException {
-		//TODO ver si los datos que inserta estan bien o los tiene que pedir en FormularioDeDatos.java
 		conector.conectar();
 		PreparedStatement insertar = conector.getCon().prepareStatement("INSERT INTO libros (titulo, autor, num_pag) VALUES (?,?,?);");
 		insertar.setString(1, libro.getTitulo());
@@ -23,15 +23,22 @@ public class GestorBBDD {
 		PreparedStatement insertar = conector.getCon().prepareStatement("DELETE FROM libros WHERE id = ?;");
 		insertar.setInt(1, id);
 		insertar.execute();
-		
-		
-		
 		conector.cerrar();
 	}
 	
-	public Libro getLibro(int id) {
-		//TODO ver como hacer que consiga el libro
-		return null;
+	public Libro getLibro(int id) throws SQLException {
+		Libro libro = new Libro();
+		PreparedStatement conseguir = conector.getCon().prepareStatement("SELECT * FROM libros WHERE id = ?");
+		conseguir.setInt(1, id);
+		conseguir.execute();
+		ResultSet resultado = conseguir.executeQuery();
+		conseguir.close();
+		
+		libro.setId(resultado.getInt("id"));
+		libro.setTitulo(resultado.getString("titulo"));
+		libro.setAutor(resultado.getString("autor"));
+		libro.setNum_pag(resultado.getInt("num_pag"));
+		return libro;
 	}
 
 }
