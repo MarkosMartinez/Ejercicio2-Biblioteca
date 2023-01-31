@@ -28,16 +28,19 @@ public class GestorBBDD extends Conector{ //Es extends?
 	
 	public Libro getLibro(int id) throws SQLException {
 		Libro libro = new Libro();
-		PreparedStatement conseguir = conector.getCon().prepareStatement("SELECT * FROM libros WHERE id = ?");
-		conseguir.setInt(1, id);
-		conseguir.execute();
-		ResultSet resultado = conseguir.executeQuery();
-		conseguir.close();
+		conector.conectar();
+		PreparedStatement pSt = conector.getCon().prepareStatement("SELECT * FROM libros WHERE id = ?");
+		pSt.setInt(1, id);
+		ResultSet resultado = pSt.executeQuery();
+		if(resultado.next()) {
+			libro.setTitulo(resultado.getString("titulo"));
+			libro.setAutor(resultado.getString("autor"));
+			libro.setNum_pag(resultado.getInt("num_pag"));
+		}
 		
-		libro.setId(resultado.getInt("id"));
-		libro.setTitulo(resultado.getString("titulo"));
-		libro.setAutor(resultado.getString("autor"));
-		libro.setNum_pag(resultado.getInt("num_pag"));
+		
+		pSt.close();
+		conector.cerrar();
 		return libro;
 	}
 

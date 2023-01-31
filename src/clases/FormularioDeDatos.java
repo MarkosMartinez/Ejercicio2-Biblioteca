@@ -1,5 +1,7 @@
 package clases;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class FormularioDeDatos {
@@ -17,7 +19,7 @@ public class FormularioDeDatos {
 		return libro;
 	}
 	
-	public static Libro modificarDatosLibro(Libro libro, Scanner scan) {
+	public static Libro modificarDatosLibro(Libro libro, Scanner scan) throws SQLException {
 		System.out.println("Escribe el nuevo titulo del libro (Anterior: " + libro.getTitulo() + "): ");
 		libro.setTitulo(scan.nextLine());
 		System.out.println("Escribe el nuevo autor del libro: (Anterior: " + libro.getAutor() + "): ");
@@ -25,6 +27,17 @@ public class FormularioDeDatos {
 		System.out.println("Escribe el nuevo numero de paginas del libro: (Anterior: " + libro.getNum_pag() + "): ");
 		libro.setNum_pag(Integer.parseInt(scan.nextLine()));
 		
+		GestorBBDD gestorbbdd = new GestorBBDD();
+		gestorbbdd.conector.conectar();
+		PreparedStatement insertar = gestorbbdd.conector.getCon().prepareStatement("UPDATE libros SET titulo= ?, autor= ?, num_pag= ? WHERE id = ?;");
+		insertar.setString(1, libro.getTitulo());
+		insertar.setString(2, libro.getAutor());
+		insertar.setInt(3, libro.getNum_pag());
+		insertar.setInt(4, libro.getId());
+		insertar.execute();
+		
+		gestorbbdd.conector.cerrar();	
+		//TODO Arreglar esto
 		return libro;
 	}
 	

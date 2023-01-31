@@ -17,9 +17,7 @@ public class GestorLibros {
 			switch (opcion) {
 			case Menu.INSERTAR_LIBRO:
 				Libro libro = FormularioDeDatos.pedirDatosLibro(scan);
-				gestorbbdd.conectar();
 				gestorbbdd.insertarLibro(libro);
-				gestorbbdd.cerrar();
 				System.out.println("Libro insertado!");
 				
 				break;
@@ -33,16 +31,12 @@ public class GestorLibros {
 				
 				break;
 			case Menu.MODIFICAR_LIBROS: //Ver o Modificar?
-				gestorbbdd.conectar();
 				System.out.println("Escribe el ID del libro que quieres modificar: ");
 				int idModifi = Integer.parseInt(scan.nextLine());
-				Libro libroModifi = new Libro();
-				libroModifi = gestorbbdd.getLibro(idModifi);
+				Libro libroModifi = gestorbbdd.getLibro(idModifi);
 				libroModifi = FormularioDeDatos.modificarDatosLibro(libroModifi, scan);
-				gestorbbdd.cerrar();
-				//TODO Arreglar esto
-			
-				
+				System.out.println("Libro modificado!");
+
 				break;
 			case Menu.VER_LIBROS: //Ver o Modificar?
 				
