@@ -17,7 +17,7 @@ public class Conector {
 	
 		try {
 			
-			Class.forName("con.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
 
 			

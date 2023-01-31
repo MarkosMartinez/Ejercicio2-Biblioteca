@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class GestorBBDD {
+public class GestorBBDD extends Conector{ //Es extends?
 	
 	Conector conector = new Conector();
 	
