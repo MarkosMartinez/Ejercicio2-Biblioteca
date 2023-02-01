@@ -26,18 +26,7 @@ public class FormularioDeDatos {
 		libro.setAutor(scan.nextLine());
 		System.out.println("Escribe el nuevo numero de paginas del libro: (Anterior: " + libro.getNum_pag() + "): ");
 		libro.setNum_pag(Integer.parseInt(scan.nextLine()));
-		
-		GestorBBDD gestorbbdd = new GestorBBDD();
-		gestorbbdd.conector.conectar();
-		PreparedStatement insertar = gestorbbdd.conector.getCon().prepareStatement("UPDATE libros SET titulo= ?, autor= ?, num_pag= ? WHERE id = ?;");
-		insertar.setString(1, libro.getTitulo());
-		insertar.setString(2, libro.getAutor());
-		insertar.setInt(3, libro.getNum_pag());
-		insertar.setInt(4, libro.getId());
-		insertar.execute();
-		gestorbbdd.conector.cerrar();	
 		return libro;
-		//TODO Esto lo tiene q hacer GestorBBDD.java?
 	}
 	
 	public static int pedirIdLibro(Scanner scan) {

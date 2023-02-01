@@ -35,6 +35,7 @@ public class GestorLibros {
 				int idModifi = Integer.parseInt(scan.nextLine());
 				Libro libroModifi = gestorbbdd.getLibro(idModifi);
 				libroModifi = FormularioDeDatos.modificarDatosLibro(libroModifi, scan);
+				gestorbbdd.modificarLibro(libroModifi);
 				System.out.println("Libro modificado!\n");
 
 				break;

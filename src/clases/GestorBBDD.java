@@ -26,6 +26,17 @@ public class GestorBBDD extends Conector{ //Es extends?
 		conector.cerrar();
 	}
 	
+	public void modificarLibro(Libro libro) throws SQLException {
+		conector.conectar();
+		PreparedStatement modificar = conector.getCon().prepareStatement("UPDATE libros SET titulo= ?, autor= ?, num_pag= ? WHERE id = ?;");
+		modificar.setString(1, libro.getTitulo());
+		modificar.setString(2, libro.getAutor());
+		modificar.setInt(3, libro.getNum_pag());
+		modificar.setInt(4, libro.getId());
+		modificar.execute();
+		conector.cerrar();	
+	}
+	
 	public Libro getLibro(int id) throws SQLException {
 		Libro libro = new Libro();
 		conector.conectar();
