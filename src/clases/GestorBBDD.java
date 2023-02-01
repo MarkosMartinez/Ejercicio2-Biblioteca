@@ -39,7 +39,7 @@ public class GestorBBDD extends Conector{ //Es extends?
 	}
 	
 	public ArrayList<Libro> verLibros() throws SQLException {
-		ArrayList<Libro> libros = new ArrayList();
+		ArrayList<Libro> libros = new ArrayList<>();
 		conector.conectar();
 	
 		PreparedStatement pSt = conector.getCon().prepareStatement("SELECT * FROM libros");
