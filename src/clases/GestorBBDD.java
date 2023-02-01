@@ -33,6 +33,7 @@ public class GestorBBDD extends Conector{ //Es extends?
 		pSt.setInt(1, id);
 		ResultSet resultado = pSt.executeQuery();
 		if(resultado.next()) {
+			libro.setId(resultado.getInt("id"));
 			libro.setTitulo(resultado.getString("titulo"));
 			libro.setAutor(resultado.getString("autor"));
 			libro.setNum_pag(resultado.getInt("num_pag"));

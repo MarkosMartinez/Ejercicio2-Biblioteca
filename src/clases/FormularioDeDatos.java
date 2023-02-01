@@ -35,10 +35,9 @@ public class FormularioDeDatos {
 		insertar.setInt(3, libro.getNum_pag());
 		insertar.setInt(4, libro.getId());
 		insertar.execute();
-		
 		gestorbbdd.conector.cerrar();	
-		//TODO Arreglar esto
 		return libro;
+		//TODO Esto lo tiene q hacer GestorBBDD.java?
 	}
 	
 	public static int pedirIdLibro(Scanner scan) {
