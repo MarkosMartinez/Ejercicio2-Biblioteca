@@ -40,7 +40,7 @@ public class GestorLibros {
 
 				break;
 			case Menu.VER_LIBROS: //Ver o Modificar?
-				
+				Visor.mostrarLibros(gestorbbdd.verLibros());
 				//TODO como hacer para mostrar los libroS (con Visor.mostrarLibro();?)
 				//conectar
 				//arraylist<Libro> libros = gestorbbdd.getlibros();

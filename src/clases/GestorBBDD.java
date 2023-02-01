@@ -3,6 +3,7 @@ package clases;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class GestorBBDD extends Conector{ //Es extends?
 	
@@ -37,6 +38,29 @@ public class GestorBBDD extends Conector{ //Es extends?
 		conector.cerrar();	
 	}
 	
+	public ArrayList<Libro> verLibros() throws SQLException {
+		ArrayList<Libro> libros = new ArrayList();
+		conector.conectar();
+	
+		PreparedStatement pSt = conector.getCon().prepareStatement("SELECT * FROM libros");
+		ResultSet resultado = pSt.executeQuery();
+		while(resultado.next()) {
+			Libro libro = new Libro();
+			libro.setId(resultado.getInt("id"));
+			libro.setTitulo(resultado.getString("titulo"));
+			libro.setAutor(resultado.getString("autor"));
+			libro.setNum_pag(resultado.getInt("num_pag"));
+			libros.add(libro);
+		}
+		conector.cerrar();
+		pSt.close();
+		conector.cerrar();
+		return libros;
+		
+	}
+	
+	
+	
 	public Libro getLibro(int id) throws SQLException {
 		Libro libro = new Libro();
 		conector.conectar();
@@ -48,6 +72,8 @@ public class GestorBBDD extends Conector{ //Es extends?
 			libro.setTitulo(resultado.getString("titulo"));
 			libro.setAutor(resultado.getString("autor"));
 			libro.setNum_pag(resultado.getInt("num_pag"));
+		}else {
+			System.out.println("Libro NO encontrado!");
 		}
 		
 		
