@@ -20,4 +20,12 @@ public class Visor {
 		System.out.println(mensaje);
 	}
 	
+	public static void mostrarSocios(ArrayList<Socio> socios) {
+		System.out.println("Esta es la lista de socios en nuestra DB: ");
+		for (int i = 0; i < socios.size(); i++) {
+			System.out.println("ID: " + socios.get(i).getId() + "\nNombre: " + socios.get(i).getNombre() + "\nApellido: " + socios.get(i).getApellido() + "\nDireccion: " + socios.get(i).getDireccion() + "\nPoblacion: " + socios.get(i).getPoblacion() + "\nProvincia: " + socios.get(i).getProvincia() + "\nDNI: " + socios.get(i).getDni()+ "\n");
+		}
+		
+	}
+	
 }

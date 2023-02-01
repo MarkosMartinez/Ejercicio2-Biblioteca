@@ -30,7 +30,7 @@ public class GestorLibros {
 				System.out.println("Libro eliminado!");
 				
 				break;
-			case Menu.MODIFICAR_LIBROS: //Ver o Modificar?
+			case Menu.MODIFICAR_LIBROS:
 				System.out.println("Escribe el ID del libro que quieres modificar: ");
 				int idModifi = Integer.parseInt(scan.nextLine());
 				Libro libroModifi = gestorbbdd.getLibro(idModifi);
@@ -39,13 +39,8 @@ public class GestorLibros {
 				System.out.println("Libro modificado!\n");
 
 				break;
-			case Menu.VER_LIBROS: //Ver o Modificar?
+			case Menu.VER_LIBROS:
 				Visor.mostrarLibros(gestorbbdd.verLibros());
-				//TODO como hacer para mostrar los libroS (con Visor.mostrarLibro();?)
-				//conectar
-				//arraylist<Libro> libros = gestorbbdd.getlibros();
-				//cerrar
-				//visor mostarlibros
 				
 				break;
 			case Menu.SALIR:

@@ -82,4 +82,30 @@ public class GestorBBDD extends Conector{ //Es extends?
 		return libro;
 	}
 
+	public ArrayList<Socio> verSocios() throws SQLException {
+		ArrayList<Socio> socios = new ArrayList<>();
+		conector.conectar();
+	
+		PreparedStatement pSt = conector.getCon().prepareStatement("SELECT * FROM socios");
+		ResultSet resultado = pSt.executeQuery();
+		while(resultado.next()) {
+			Socio socio = new Socio();
+			socio.setId(resultado.getInt("id"));
+			socio.setNombre(resultado.getString("nombre"));
+			socio.setApellido(resultado.getString("apellido"));
+			socio.setDireccion(resultado.getString("direccion"));
+			socio.setPoblacion(resultado.getString("poblacion"));
+			socio.setProvincia(resultado.getString("provincia"));
+			socio.setDni(resultado.getString("dni"));
+			socios.add(socio);
+		}
+		conector.cerrar();
+		pSt.close();
+		conector.cerrar();
+		return socios;
+		
+	}
+	
+	
+	
 }

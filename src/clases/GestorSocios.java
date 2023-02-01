@@ -1,12 +1,14 @@
 package clases;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class GestorSocios {
 	
-	public static void run(Scanner scan){
+	public static void run(Scanner scan) throws SQLException{
 		
 		int opcion;
+		GestorBBDD gestorbbdd = new GestorBBDD();
 		do {
 			Menu.mostrarMenuSocios();
 			opcion = Integer.parseInt(scan.nextLine());
@@ -14,7 +16,7 @@ public class GestorSocios {
 			switch (opcion) {
 			case Menu.VER_SOCIOS:
 				
-				//TODO Como hacer para ver los socios
+				Visor.mostrarSocios(gestorbbdd.verSocios());
 				
 				break;
 			case Menu.SALIR:
