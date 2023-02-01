@@ -26,7 +26,7 @@ public void run() throws SQLException{
 			
 			break;
 		case Menu.SALIR:
-			System.out.println("Agur!");
+			System.out.println("\nAgur!");
 			break;
 		default:
 			System.out.println("Opcion incorrecta!");

@@ -30,7 +30,7 @@ public class GestorLibros {
 				System.out.println("Libro eliminado!");
 				
 				break;
-			case Menu.MODIFICAR_LIBROS:
+			case Menu.MODIFICAR_LIBRO:
 				System.out.println("Escribe el ID del libro que quieres modificar: ");
 				int idModifi = Integer.parseInt(scan.nextLine());
 				Libro libroModifi = gestorbbdd.getLibro(idModifi);
