@@ -32,9 +32,11 @@ public class GestorSocios {
 				break;
 			case Menu.MODIFICAR_SOCIOS:
 				Socio socioModifi = gestorbbdd.getSocio(FormularioDeDatos.pedirIdSocio(scan));
+				if(socioModifi.getId() != -1) {
 				socioModifi = FormularioDeDatos.modificarDatosSocio(socioModifi, scan);
 				gestorbbdd.modificarSocio(socioModifi);
 				Visor.mostrarMensaje("\u001B[32mSocio modificado!\u001B[30m\n");
+				}
 	
 				break;
 			case Menu.SALIR:

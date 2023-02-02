@@ -29,9 +29,11 @@ public class GestorLibros {
 				break;
 			case Menu.MODIFICAR_LIBRO:
 				Libro libroModifi = gestorbbdd.getLibro(FormularioDeDatos.pedirIdLibro(scan));
+				if(libroModifi.getId() != -1) {
 				libroModifi = FormularioDeDatos.modificarDatosLibro(libroModifi, scan);
 				gestorbbdd.modificarLibro(libroModifi);
 				Visor.mostrarMensaje("\u001B[32mLibro modificado!\u001B[30m\n");
+			}
 
 				break;
 			case Menu.VER_LIBROS:

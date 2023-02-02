@@ -72,8 +72,8 @@ public class GestorBBDD extends Conector{
 			libro.setAutor(resultado.getString("autor"));
 			libro.setNum_pag(resultado.getInt("num_pag"));
 		}else {
-			System.out.println("Libro NO encontrado\nPor favor, reinicia el programa para evitar errores!");
-			//TODO Hacer que salga o algo cuando no encuentre el libro!
+			Visor.mostrarMensaje("\u001B[31mLibro NO encontrado!\n\u001B[30m");
+			libro.setId(-1);
 		}
 		
 		
@@ -145,8 +145,8 @@ public class GestorBBDD extends Conector{
 			socio.setProvincia(resultado.getString("provincia"));
 			socio.setDni(resultado.getString("dni"));
 		}else {
-			System.out.println("Socio NO encontrado\nPor favor, reinicia el programa para evitar errores!");
-			//TODO Hacer que salga o algo cuando no encuentre el libro!
+			Visor.mostrarMensaje("\u001B[31mSocio NO encontrado!\n\u001B[30m");
+			socio.setId(-1);
 		}
 		
 		
@@ -169,4 +169,27 @@ public class GestorBBDD extends Conector{
 		conector.cerrar();	
 	}
 	
+	
+	
+	//PRESTAMOS
+	public Prestamo getPrestamo(int id) throws SQLException {
+		Prestamo prestamo = new Prestamo();
+		conector.conectar();
+		PreparedStatement pSt = conector.getCon().prepareStatement("SELECT * FROM prestamos WHERE id_libro = ?");
+		pSt.setInt(1, id);
+		ResultSet resultado = pSt.executeQuery();
+		if(resultado.next()) {
+			prestamo.setId_libro(resultado.getInt("id_libro"));
+			prestamo.setId_socio(resultado.getInt("id_socio"));
+			prestamo.setFecha(resultado.getString("fecha"));
+			//TODO Comprobar el campo de fecha.
+			prestamo.setDevuelto(resultado.getBoolean("devuelto"));
+		}else {
+			prestamo.setDevuelto(true);
+		}
+		pSt.close();
+		conector.cerrar();
+		return prestamo;
+	}
 }
+
