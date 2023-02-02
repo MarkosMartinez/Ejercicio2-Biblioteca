@@ -19,6 +19,23 @@ public class GestorSocios {
 				Visor.mostrarSocios(gestorbbdd.verSocios());
 				
 				break;
+			case Menu.INSERTAR_SOCIOS:
+				
+				Socio socio = FormularioDeDatos.pedirDatosSocio(scan);
+				gestorbbdd.insertarSocio(socio);
+				System.out.println("Socio insertado!");
+				
+				break;
+			case Menu.ELIMINAR_SOCIOS:
+	
+				System.out.println("Proximamente...");
+	
+				break;
+			case Menu.MODIFICAR_SOCIOS:
+	
+				System.out.println("Proximamente...");
+	
+				break;
 			case Menu.SALIR:
 				break;
 			default:

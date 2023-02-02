@@ -5,10 +5,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class GestorBBDD extends Conector{ //Es extends?
+public class GestorBBDD extends Conector{
 	
 	Conector conector = new Conector();
 	
+	//LIBROS
 	public void insertarLibro(Libro libro) throws SQLException {
 		conector.conectar();
 		PreparedStatement insertar = conector.getCon().prepareStatement("INSERT INTO libros (titulo, autor, num_pag) VALUES (?,?,?);");
@@ -59,8 +60,6 @@ public class GestorBBDD extends Conector{ //Es extends?
 		
 	}
 	
-	
-	
 	public Libro getLibro(int id) throws SQLException {
 		Libro libro = new Libro();
 		conector.conectar();
@@ -107,5 +106,19 @@ public class GestorBBDD extends Conector{ //Es extends?
 	}
 	
 	
+	
+	//SOCIOS
+	public void insertarSocio(Socio socio) throws SQLException {
+		conector.conectar();
+		PreparedStatement insertar = conector.getCon().prepareStatement("INSERT INTO socios (nombre, apellido, direccion, poblacion, provincia, dni) VALUES (?,?,?,?,?,?);");
+		insertar.setString(1, socio.getNombre());
+		insertar.setString(2, socio.getApellido());
+		insertar.setString(3, socio.getDireccion());
+		insertar.setString(4, socio.getPoblacion());
+		insertar.setString(5, socio.getProvincia());
+		insertar.setString(6, socio.getDni());
+		insertar.execute();
+		conector.cerrar();	
+	}
 	
 }

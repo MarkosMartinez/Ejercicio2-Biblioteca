@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class FormularioDeDatos {
 
+	
+	//LIBROS
 	public static Libro pedirDatosLibro(Scanner scan) {
 		Libro libro = new Libro();
 		System.out.println("Escribe el titulo del libro: ");
@@ -43,6 +45,28 @@ public class FormularioDeDatos {
 		int id = Integer.parseInt(scan.nextLine());
 		
 		return id;
+	}
+	
+	
+	
+	//SOCIOS
+	public static Socio pedirDatosSocio(Scanner scan) {
+		Socio socio = new Socio();
+		System.out.println("Escribe el nombre del socio: ");
+		socio.setNombre(scan.nextLine());
+		System.out.println("Escribe el apellido del socio: ");
+		socio.setApellido(scan.nextLine());
+		System.out.println("Escribe la direccion del socio: ");
+		socio.setDireccion(scan.nextLine());
+		System.out.println("Escribe el poblacion del socio: ");
+		socio.setPoblacion(scan.nextLine());
+		System.out.println("Escribe la provincia del socio: ");
+		socio.setProvincia(scan.nextLine());
+		System.out.println("Escribe el DNI del socio: ");
+		socio.setDni(scan.nextLine());
+		
+		
+		return socio;
 	}
 	
 }

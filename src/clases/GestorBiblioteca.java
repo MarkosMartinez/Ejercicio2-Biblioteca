@@ -23,6 +23,7 @@ public void run() throws SQLException{
 			
 			break;
 		case Menu.GESTIONAR_PRESTAMOS:
+			System.out.println("Proximamente...");
 			
 			break;
 		case Menu.SALIR:

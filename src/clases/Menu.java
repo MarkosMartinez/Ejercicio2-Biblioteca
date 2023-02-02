@@ -14,10 +14,13 @@ public class Menu {
 	public static final int INSERTAR_LIBRO = 1;
 	public static final int ELIMINAR_LIBRO = 2;
 	public static final int MODIFICAR_LIBRO = 3;
-	public static final int VER_LIBROS = 4; /*Ver o modificar?*/
+	public static final int VER_LIBROS = 4;
 	
 	//mostrarMenuSocios
 	public static final int VER_SOCIOS = 1;
+	public static final int INSERTAR_SOCIOS = 2;
+	public static final int ELIMINAR_SOCIOS = 3;
+	public static final int MODIFICAR_SOCIOS = 4;
 	
 	//menuPrestamos
 	public static final int REALIZAR_PRESTAMO = 1;
@@ -32,7 +35,7 @@ public class Menu {
 	}
 
 	public static void mostrarMenuSocios() {
-	System.out.println(VER_SOCIOS + ".- Ver Socios\n" + SALIR + ".- Salir");
+	System.out.println(VER_SOCIOS + ".- Ver Socios\n" + INSERTAR_SOCIOS + ".- Insertar Socio\n" + ELIMINAR_SOCIOS + ".- Eliminar Socio\n" + MODIFICAR_SOCIOS + ".- Modificar socio\n" + SALIR + ".- Salir");
 	}
 	
 	public static void menuPrestamos() {
