@@ -21,26 +21,26 @@ public class GestorSocios {
 			case Menu.INSERTAR_SOCIOS:
 				Socio socio = FormularioDeDatos.pedirDatosSocio(scan);
 				gestorbbdd.insertarSocio(socio);
-				Visor.mostrarMensaje("Socio insertado!\n");
+				Visor.mostrarMensaje("\u001B[32mSocio insertado!\u001B[30m\n");
 				
 				break;
 			case Menu.ELIMINAR_SOCIOS:
 				int idDelete = FormularioDeDatos.pedirIdSocio(scan);
 				gestorbbdd.eliminarSocio(idDelete);
-				Visor.mostrarMensaje("Socio eliminado!\n!");
+				Visor.mostrarMensaje("\u001B[32mSocio eliminado!\u001B[30m\n");
 	
 				break;
 			case Menu.MODIFICAR_SOCIOS:
 				Socio socioModifi = gestorbbdd.getSocio(FormularioDeDatos.pedirIdSocio(scan));
 				socioModifi = FormularioDeDatos.modificarDatosSocio(socioModifi, scan);
 				gestorbbdd.modificarSocio(socioModifi);
-				Visor.mostrarMensaje("Socio modificado!\n");
+				Visor.mostrarMensaje("\u001B[32mSocio modificado!\u001B[30m\n");
 	
 				break;
 			case Menu.SALIR:
 				break;
 			default:
-				System.out.println("Opcion no valida!\nIntentalo de nuevo.");
+				System.out.println("\u001B[31mOpcion no valida!\nIntentalo de nuevo.\u001B[30m");
 				break;
 			}
 			

@@ -23,14 +23,14 @@ public void run() throws SQLException{
 			
 			break;
 		case Menu.GESTIONAR_PRESTAMOS:
-			System.out.println("Proximamente...");
+			GestorPrestamos.run(scan);
 			
 			break;
 		case Menu.SALIR:
 			System.out.println("\nAgur!");
 			break;
 		default:
-			System.out.println("Opcion incorrecta!");
+			System.out.println("\u001B[31mOpcion no valida!\nIntentalo de nuevo.\u001B[30m");
 		}
 
 	} while (opcion_menu != Menu.SALIR);
