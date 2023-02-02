@@ -1,6 +1,5 @@
 package clases;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -20,18 +19,27 @@ public class FormularioDeDatos {
 	}
 	
 	public static Libro modificarDatosLibro(Libro libro, Scanner scan) throws SQLException {
+		System.out.println("*Puedes dejar los datos vacios si quieres dejarlos como antes!");
 		System.out.println("Escribe el nuevo titulo del libro (Anterior: " + libro.getTitulo() + "): ");
-		libro.setTitulo(scan.nextLine());
+		String nuevoTitulo = scan.nextLine();
+		if(nuevoTitulo != "") {
+			libro.setTitulo(nuevoTitulo);
+		}
 		System.out.println("Escribe el nuevo autor del libro: (Anterior: " + libro.getAutor() + "): ");
-		libro.setAutor(scan.nextLine());
+		String nuevoAutor = scan.nextLine();
+		if(nuevoAutor != "") {
+			libro.setAutor(nuevoAutor);
+		}
 		System.out.println("Escribe el nuevo numero de paginas del libro: (Anterior: " + libro.getNum_pag() + "): ");
-		libro.setNum_pag(Integer.parseInt(scan.nextLine()));
+		String nuevoNumPag = scan.nextLine();
+		if(nuevoNumPag != "") {
+			libro.setNum_pag(Integer.parseInt(nuevoNumPag));
+		}
 		return libro;
 	}
 	
 	public static int pedirIdLibro(Scanner scan) {
-		//TODO Mirar si esta bien.
-		System.out.println("Escribe el id del libro que quieres pedir: ");
+		System.out.println("Escribe el id del libro al que quieres acceder: ");
 		int id = Integer.parseInt(scan.nextLine());
 		
 		return id;

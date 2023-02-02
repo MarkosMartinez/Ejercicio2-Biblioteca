@@ -31,9 +31,7 @@ public class GestorLibros {
 				
 				break;
 			case Menu.MODIFICAR_LIBRO:
-				System.out.println("Escribe el ID del libro que quieres modificar: ");
-				int idModifi = Integer.parseInt(scan.nextLine());
-				Libro libroModifi = gestorbbdd.getLibro(idModifi);
+				Libro libroModifi = gestorbbdd.getLibro(FormularioDeDatos.pedirIdLibro(scan));
 				libroModifi = FormularioDeDatos.modificarDatosLibro(libroModifi, scan);
 				gestorbbdd.modificarLibro(libroModifi);
 				System.out.println("Libro modificado!\n");
