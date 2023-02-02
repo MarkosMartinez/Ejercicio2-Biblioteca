@@ -18,23 +18,20 @@ public class GestorLibros {
 			case Menu.INSERTAR_LIBRO:
 				Libro libro = FormularioDeDatos.pedirDatosLibro(scan);
 				gestorbbdd.insertarLibro(libro);
-				System.out.println("Libro insertado!");
+				Visor.mostrarMensaje("Libro insertado!\n");
 				
 				break;
 			case Menu.ELIMINAR_LIBRO:
-				gestorbbdd.conectar();
-				System.out.println("Escribe el ID del libro que quieres eliminar: ");
-				int idDelete = Integer.parseInt(scan.nextLine());
+				int idDelete = FormularioDeDatos.pedirIdLibro(scan);
 				gestorbbdd.eliminarLibro(idDelete);
-				gestorbbdd.cerrar();
-				System.out.println("Libro eliminado!");
+				Visor.mostrarMensaje("Libro eliminado!\n");
 				
 				break;
 			case Menu.MODIFICAR_LIBRO:
 				Libro libroModifi = gestorbbdd.getLibro(FormularioDeDatos.pedirIdLibro(scan));
 				libroModifi = FormularioDeDatos.modificarDatosLibro(libroModifi, scan);
 				gestorbbdd.modificarLibro(libroModifi);
-				System.out.println("Libro modificado!\n");
+				Visor.mostrarMensaje("Libro modificado!\n");
 
 				break;
 			case Menu.VER_LIBROS:

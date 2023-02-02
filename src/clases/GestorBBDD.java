@@ -22,9 +22,9 @@ public class GestorBBDD extends Conector{
 	
 	public void eliminarLibro(int id) throws SQLException {
 		conector.conectar();
-		PreparedStatement insertar = conector.getCon().prepareStatement("DELETE FROM libros WHERE id = ?;");
-		insertar.setInt(1, id);
-		insertar.execute();
+		PreparedStatement eliminar = conector.getCon().prepareStatement("DELETE FROM libros WHERE id = ?;");
+		eliminar.setInt(1, id);
+		eliminar.execute();
 		conector.cerrar();
 	}
 	
@@ -73,6 +73,7 @@ public class GestorBBDD extends Conector{
 			libro.setNum_pag(resultado.getInt("num_pag"));
 		}else {
 			System.out.println("Libro NO encontrado!");
+			//TODO Hacer que salga o algo cuando no encuentre el libro!
 		}
 		
 		
@@ -118,6 +119,53 @@ public class GestorBBDD extends Conector{
 		insertar.setString(5, socio.getProvincia());
 		insertar.setString(6, socio.getDni());
 		insertar.execute();
+		conector.cerrar();	
+	}
+	
+	public void eliminarSocio(int id) throws SQLException {
+		conector.conectar();
+		PreparedStatement eliminar = conector.getCon().prepareStatement("DELETE FROM socios WHERE id = ?;");
+		eliminar.setInt(1, id);
+		eliminar.execute();
+		conector.cerrar();
+	}
+	
+	public Socio getSocio(int id) throws SQLException {
+		Socio socio = new Socio();
+		conector.conectar();
+		PreparedStatement pSt = conector.getCon().prepareStatement("SELECT * FROM socios WHERE id = ?");
+		pSt.setInt(1, id);
+		ResultSet resultado = pSt.executeQuery();
+		if(resultado.next()) {
+			socio.setId(resultado.getInt("id"));
+			socio.setNombre(resultado.getString("nombre"));
+			socio.setApellido(resultado.getString("apellido"));
+			socio.setDireccion(resultado.getString("direccion"));
+			socio.setPoblacion(resultado.getString("poblacion"));
+			socio.setProvincia(resultado.getString("provincia"));
+			socio.setDni(resultado.getString("dni"));
+		}else {
+			System.out.println("Libro NO encontrado!");
+			//TODO Hacer que salga o algo cuando no encuentre el libro!
+		}
+		
+		
+		pSt.close();
+		conector.cerrar();
+		return socio;
+	}
+	
+	public void modificarSocio(Socio socio) throws SQLException {
+		conector.conectar();
+		PreparedStatement modificar = conector.getCon().prepareStatement("UPDATE socios SET nombre= ?, apellido= ?, direccion= ?, poblacion=?, provincia=?, dni=? WHERE id = ?;");
+		modificar.setString(1, socio.getNombre());
+		modificar.setString(2, socio.getApellido());
+		modificar.setString(3, socio.getDireccion());
+		modificar.setString(4, socio.getPoblacion());
+		modificar.setString(5, socio.getProvincia());
+		modificar.setString(6, socio.getDni());
+		modificar.setInt(7, socio.getId());
+		modificar.execute();
 		conector.cerrar();	
 	}
 	

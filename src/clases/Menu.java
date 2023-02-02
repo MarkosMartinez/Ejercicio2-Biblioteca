@@ -35,7 +35,7 @@ public class Menu {
 	}
 
 	public static void mostrarMenuSocios() {
-	System.out.println(VER_SOCIOS + ".- Ver Socios\n" + INSERTAR_SOCIOS + ".- Insertar Socio\n" + ELIMINAR_SOCIOS + ".- Eliminar Socio\n" + MODIFICAR_SOCIOS + ".- Modificar socio\n" + SALIR + ".- Salir");
+	System.out.println(VER_SOCIOS + ".- Ver Socios\n" + INSERTAR_SOCIOS + ".- Insertar Socio\n" + ELIMINAR_SOCIOS + ".- Eliminar Socio\n" + MODIFICAR_SOCIOS + ".- Modificar Socio\n" + SALIR + ".- Salir");
 	}
 	
 	public static void menuPrestamos() {

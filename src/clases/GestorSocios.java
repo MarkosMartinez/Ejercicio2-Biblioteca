@@ -15,25 +15,26 @@ public class GestorSocios {
 			
 			switch (opcion) {
 			case Menu.VER_SOCIOS:
-				
 				Visor.mostrarSocios(gestorbbdd.verSocios());
 				
 				break;
 			case Menu.INSERTAR_SOCIOS:
-				
 				Socio socio = FormularioDeDatos.pedirDatosSocio(scan);
 				gestorbbdd.insertarSocio(socio);
-				System.out.println("Socio insertado!");
+				Visor.mostrarMensaje("Socio insertado!\n");
 				
 				break;
 			case Menu.ELIMINAR_SOCIOS:
-	
-				System.out.println("Proximamente...");
+				int idDelete = FormularioDeDatos.pedirIdSocio(scan);
+				gestorbbdd.eliminarSocio(idDelete);
+				Visor.mostrarMensaje("Socio eliminado!\n!");
 	
 				break;
 			case Menu.MODIFICAR_SOCIOS:
-	
-				System.out.println("Proximamente...");
+				Socio socioModifi = gestorbbdd.getSocio(FormularioDeDatos.pedirIdSocio(scan));
+				socioModifi = FormularioDeDatos.modificarDatosSocio(socioModifi, scan);
+				gestorbbdd.modificarSocio(socioModifi);
+				Visor.mostrarMensaje("Socio modificado!\n");
 	
 				break;
 			case Menu.SALIR:
