@@ -72,7 +72,7 @@ public class GestorBBDD extends Conector{
 			libro.setAutor(resultado.getString("autor"));
 			libro.setNum_pag(resultado.getInt("num_pag"));
 		}else {
-			System.out.println("Libro NO encontrado!");
+			System.out.println("Libro NO encontrado\nPor favor, reinicia el programa para evitar errores!");
 			//TODO Hacer que salga o algo cuando no encuentre el libro!
 		}
 		
@@ -145,7 +145,7 @@ public class GestorBBDD extends Conector{
 			socio.setProvincia(resultado.getString("provincia"));
 			socio.setDni(resultado.getString("dni"));
 		}else {
-			System.out.println("Libro NO encontrado!");
+			System.out.println("Socio NO encontrado\nPor favor, reinicia el programa para evitar errores!");
 			//TODO Hacer que salga o algo cuando no encuentre el libro!
 		}
 		
