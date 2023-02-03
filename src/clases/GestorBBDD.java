@@ -191,5 +191,17 @@ public class GestorBBDD extends Conector{
 		conector.cerrar();
 		return prestamo;
 	}
+
+	public void realizarPrestamo(Libro prestamoLibro, Socio prestamoSocio) throws SQLException {
+		conector.conectar();
+		PreparedStatement prestamo = conector.getCon().prepareStatement("INSERT INTO prestamos (id_libro, id_socio, fecha, devuelto) VALUES (?,?,?,?);");
+		prestamo.setInt(1, prestamoLibro.getId());
+		prestamo.setInt(2, prestamoSocio.getId());
+		/*prestamo.setDate(3, FormularioDeDatos.pedirFechaPrestamo());*/
+		//TODO Arrelgar pedirFechaPrestamo antes de descomentar esto.
+		prestamo.setBoolean(4, false);
+		prestamo.execute();
+		conector.cerrar();
+	}
 }
 

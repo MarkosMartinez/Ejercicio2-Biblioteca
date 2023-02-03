@@ -1,6 +1,9 @@
 package clases;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class FormularioDeDatos {
@@ -109,6 +112,16 @@ public class FormularioDeDatos {
 			socio.setDni(nuevoDni);
 		}
 		return socio;
+	}
+
+	public static Date pedirFechaPrestamo() throws ParseException {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Escribe la fecha del prestamo (dd/MM/yyyy)");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		/*Date fecha = sdf.parse(scan.nextLine()));*/
+		//TODO Convertir java.util.Date a java.sql.Date
+		scan.close();
+		return null;
 	}
 	
 }
