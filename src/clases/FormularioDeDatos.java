@@ -114,14 +114,13 @@ public class FormularioDeDatos {
 		return socio;
 	}
 
-	public static Date pedirFechaPrestamo() throws ParseException {
-		Scanner scan = new Scanner(System.in);
+	public static Date pedirFechaPrestamo(Scanner scan) throws ParseException {
 		System.out.println("Escribe la fecha del prestamo (dd/MM/yyyy)");
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		/*Date fecha = sdf.parse(scan.nextLine()));*/
-		//TODO Convertir java.util.Date a java.sql.Date
-		scan.close();
-		return null;
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		java.util.Date fechaUtil = formato.parse(scan.nextLine());
+		java.sql.Date fechaSql = new java.sql.Date(fechaUtil.getTime());
+		//TODO Arreglar la manera de agregar las fechas. Ahora: yyyy/MM/dd. Se puede cambiar?
+		return fechaSql;
 	}
 	
 }

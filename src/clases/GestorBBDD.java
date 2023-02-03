@@ -1,8 +1,10 @@
 package clases;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class GestorBBDD extends Conector{
@@ -182,23 +184,22 @@ public class GestorBBDD extends Conector{
 			prestamo.setId_libro(resultado.getInt("id_libro"));
 			prestamo.setId_socio(resultado.getInt("id_socio"));
 			prestamo.setFecha(resultado.getString("fecha"));
-			//TODO Comprobar el campo de fecha.
 			prestamo.setDevuelto(resultado.getBoolean("devuelto"));
 		}else {
 			prestamo.setDevuelto(true);
+			prestamo.setId_libro(id);
 		}
 		pSt.close();
 		conector.cerrar();
 		return prestamo;
 	}
 
-	public void realizarPrestamo(Libro prestamoLibro, Socio prestamoSocio) throws SQLException {
+	public void realizarPrestamo(Libro prestamoLibro, Socio prestamoSocio, Date fechaPrestamo) throws SQLException {
 		conector.conectar();
 		PreparedStatement prestamo = conector.getCon().prepareStatement("INSERT INTO prestamos (id_libro, id_socio, fecha, devuelto) VALUES (?,?,?,?);");
 		prestamo.setInt(1, prestamoLibro.getId());
 		prestamo.setInt(2, prestamoSocio.getId());
-		/*prestamo.setDate(3, FormularioDeDatos.pedirFechaPrestamo());*/
-		//TODO Arrelgar pedirFechaPrestamo antes de descomentar esto.
+		prestamo.setDate(3, fechaPrestamo);
 		prestamo.setBoolean(4, false);
 		prestamo.execute();
 		conector.cerrar();

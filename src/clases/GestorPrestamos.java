@@ -1,10 +1,12 @@
 package clases;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class GestorPrestamos {
-	public static void run(Scanner scan) throws SQLException {
+	public static void run(Scanner scan) throws SQLException, ParseException {
 		
 		int opcion;
 		GestorBBDD gestorbbdd = new GestorBBDD();
@@ -15,16 +17,19 @@ public class GestorPrestamos {
 			
 			switch (opcion) {
 			case Menu.REALIZAR_PRESTAMO:
-				System.out.println("Proximamente...");
 				Prestamo realizarPrestamo = gestorbbdd.getPrestamo(FormularioDeDatos.pedirIdLibro(scan));
 				if(realizarPrestamo.isDevuelto() == false) {
 					Visor.mostrarMensaje("\u001B[31mEl libro ya esta en un prestamo!\n\u001B[30m");
 				}else {
 					
 					Libro prestamoLibro = gestorbbdd.getLibro(realizarPrestamo.getId_libro());
-					Socio prestamoSocio = FormularioDeDatos.pedirDatosSocio(scan);
-					gestorbbdd.realizarPrestamo(prestamoLibro, prestamoSocio);
+					Socio prestamoSocio = gestorbbdd.getSocio(FormularioDeDatos.pedirIdSocio(scan));
+					if(prestamoSocio.getId() != -1) {
+					Date fechaPrestamo = FormularioDeDatos.pedirFechaPrestamo(scan);
+					System.out.println("Realizando prestamo...");
+					gestorbbdd.realizarPrestamo(prestamoLibro, prestamoSocio, fechaPrestamo);
 					Visor.mostrarMensaje("\u001B[32mPrestamo realizado con exito!\n\u001B[30m");
+					}
 				}
 				
 				break;
