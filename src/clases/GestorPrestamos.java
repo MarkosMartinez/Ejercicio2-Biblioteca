@@ -17,7 +17,7 @@ public class GestorPrestamos {
 			switch (opcion) {
 			case Menu.REALIZAR_PRESTAMO:
 				Prestamo realizarPrestamo = gestorbbdd.getPrestamo(FormularioDeDatos.pedirIdLibro(scan));
-				if(realizarPrestamo.isDevuelto() == false) {
+				if(realizarPrestamo.getDevuelto() == 1) {
 					Visor.mostrarMensaje("\u001B[31mEl libro ya esta en un prestamo!\n\u001B[30m");
 				}else {
 					
@@ -34,7 +34,7 @@ public class GestorPrestamos {
 				break;
 			case Menu.DEVOLVER_LIBRO:
 				Prestamo devolverLibro = gestorbbdd.getPrestamo(FormularioDeDatos.pedirIdLibro(scan));
-				if(devolverLibro.isDevuelto() == true) {
+				if(devolverLibro.getDevuelto() == 0) {
 					Visor.mostrarMensaje("\u001B[31mEste libro no se puede delvolver!\n\u001B[30m");
 				}else {
 					devolverLibro = gestorbbdd.devolverLibro(devolverLibro);
@@ -53,7 +53,7 @@ public class GestorPrestamos {
 				break;
 			case Menu.CONSULTAR_DISPONIBILIDAD:
 				Prestamo consultaPrestamo = gestorbbdd.getPrestamo(FormularioDeDatos.pedirIdLibro(scan));
-				if(consultaPrestamo.isDevuelto() == true) {
+				if(consultaPrestamo.getDevuelto() != 1) {
 					Visor.mostrarMensaje("\u001B[32mEl libro esta disponible!\n\u001B[30m");
 				}else {
 					Visor.mostrarMensaje("\u001B[31mEl libro NO esta disponible!\n\u001B[30m");

@@ -7,7 +7,7 @@ public class Prestamo {
 	private int id_libro;
 	private int id_socio;
 	private Date fecha;
-	private boolean devuelto;
+	private int devuelto;
 	
 	public Prestamo() {
 		
@@ -37,14 +37,12 @@ public class Prestamo {
 		this.fecha = date;
 	}
 
-	public boolean isDevuelto() {
+	public int getDevuelto() {
 		return devuelto;
 	}
 
-	public void setDevuelto(boolean devuelto) {
+	public void setDevuelto(int devuelto) {
 		this.devuelto = devuelto;
-	}
-	
-	
+	}	
 	
 }
