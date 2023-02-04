@@ -1,10 +1,12 @@
 package clases;
 
+import java.util.Date;
+
 public class Prestamo {
 
 	private int id_libro;
 	private int id_socio;
-	private String fecha;
+	private Date fecha;
 	private boolean devuelto;
 	
 	public Prestamo() {
@@ -27,12 +29,12 @@ public class Prestamo {
 		this.id_socio = id_socio;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
+	public void setFecha(Date date) {
+		this.fecha = date;
 	}
 
 	public boolean isDevuelto() {

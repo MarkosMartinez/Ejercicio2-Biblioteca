@@ -183,7 +183,7 @@ public class GestorBBDD extends Conector{
 		if(resultado.next()) {
 			prestamo.setId_libro(resultado.getInt("id_libro"));
 			prestamo.setId_socio(resultado.getInt("id_socio"));
-			prestamo.setFecha(resultado.getString("fecha"));
+			prestamo.setFecha(resultado.getDate("fecha"));
 			prestamo.setDevuelto(resultado.getBoolean("devuelto"));
 		}else {
 			prestamo.setDevuelto(true);
@@ -194,12 +194,13 @@ public class GestorBBDD extends Conector{
 		return prestamo;
 	}
 
-	public void realizarPrestamo(Libro prestamoLibro, Socio prestamoSocio, Date fechaPrestamo) throws SQLException {
+	public void realizarPrestamo(Libro prestamoLibro, Socio prestamoSocio, Prestamo prestamo2) throws SQLException {
 		conector.conectar();
 		PreparedStatement prestamo = conector.getCon().prepareStatement("INSERT INTO prestamos (id_libro, id_socio, fecha, devuelto) VALUES (?,?,?,?);");
 		prestamo.setInt(1, prestamoLibro.getId());
 		prestamo.setInt(2, prestamoSocio.getId());
-		prestamo.setDate(3, fechaPrestamo);
+		System.out.println("Fecha recivida: " + prestamo2.getFecha());
+		prestamo.setDate(3, new Date(prestamo2.getFecha().getTime()));
 		prestamo.setBoolean(4, false);
 		prestamo.execute();
 		conector.cerrar();

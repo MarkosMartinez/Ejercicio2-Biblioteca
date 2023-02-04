@@ -22,12 +22,12 @@ public class GestorPrestamos {
 					Visor.mostrarMensaje("\u001B[31mEl libro ya esta en un prestamo!\n\u001B[30m");
 				}else {
 					
+					Prestamo prestamo = new Prestamo();
 					Libro prestamoLibro = gestorbbdd.getLibro(realizarPrestamo.getId_libro());
 					Socio prestamoSocio = gestorbbdd.getSocio(FormularioDeDatos.pedirIdSocio(scan));
 					if(prestamoSocio.getId() != -1) {
-					Date fechaPrestamo = FormularioDeDatos.pedirFechaPrestamo(scan);
-					System.out.println("Realizando prestamo...");
-					gestorbbdd.realizarPrestamo(prestamoLibro, prestamoSocio, fechaPrestamo);
+					prestamo = FormularioDeDatos.pedirFechaPrestamo(scan, prestamo);
+					gestorbbdd.realizarPrestamo(prestamoLibro, prestamoSocio, prestamo);
 					Visor.mostrarMensaje("\u001B[32mPrestamo realizado con exito!\n\u001B[30m");
 					}
 				}
