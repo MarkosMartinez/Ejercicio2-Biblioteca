@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Visor {
 
 	public static void mostrarLibros(ArrayList<Libro> libros) {
-		System.out.println("Esta es la lista de libros en nuestra DB: ");
+		System.out.println("Esta es la lista de libros en nuestra DB\n: ");
 		for (int i = 0; i < libros.size(); i++) {
 			System.out.println("ID: " + libros.get(i).getId() + "\nTitulo: " + libros.get(i).getTitulo() + "\nAutor: " + libros.get(i).getAutor() + "\nNumero de paginas: " + libros.get(i).getNum_pag() + "\n");
 		}
@@ -29,10 +29,10 @@ public class Visor {
 	}
 	
 	public static void mostrarPrestamosNoDevueltos(ArrayList<Prestamo> prestamosNoDevueltos) {
-		System.out.println("Esta es la lista de socios en nuestra DB: ");
-		/*for (Socio prestamo : prestamosNoDevueltos) {
-
-		}*/
+		System.out.println("Esta es la lista de prestamos no devueltos en nuestra DB: ");
+		for (Prestamo prestamo : prestamosNoDevueltos) {
+			System.out.println("ID del libro: " + prestamo.getId_libro() + "\nID del socio: " + prestamo.getId_socio() + "\nFecha del prestamo: " + prestamo.getFecha() + "\nDevuelto: No\n");
+		}
 	}
 	
 }

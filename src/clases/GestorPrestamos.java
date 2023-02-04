@@ -43,8 +43,7 @@ public class GestorPrestamos {
 				
 				break;
 			case Menu.CONSULTAR_PRETAMOS_NO_DEVUELTOS:
-				System.out.println("Proximamente...");
-				//TODO El siguiente en hacer? (Su base del "visor" creado).
+				Visor.mostrarPrestamosNoDevueltos(gestorbbdd.consultarPrestamosNoDevueltos());
 
 				break;
 			case Menu.CONSULTAR_PRESTAMOS_SOCIOS:

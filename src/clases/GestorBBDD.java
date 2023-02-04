@@ -10,7 +10,7 @@ public class GestorBBDD extends Conector{
 	
 	Conector conector = new Conector();
 	
-	//LIBROS
+	//LIBROS ----------------------------------------------------
 	public void insertarLibro(Libro libro) throws SQLException {
 			conector.conectar();
 			PreparedStatement insertar = conector.getCon().prepareStatement("INSERT INTO libros (titulo, autor, num_pag) VALUES (?,?,?);");
@@ -109,7 +109,7 @@ public class GestorBBDD extends Conector{
 	
 	
 	
-	//SOCIOS
+	//SOCIOS ----------------------------------------------------
 	public void insertarSocio(Socio socio) throws SQLException {
 		conector.conectar();
 		PreparedStatement insertar = conector.getCon().prepareStatement("INSERT INTO socios (nombre, apellido, direccion, poblacion, provincia, dni) VALUES (?,?,?,?,?,?);");
@@ -172,7 +172,7 @@ public class GestorBBDD extends Conector{
 	
 	
 	
-	//PRESTAMOS
+	//PRESTAMOS ----------------------------------------------
 	public Prestamo getPrestamo(int id) throws SQLException {
 		Prestamo prestamo = new Prestamo();
 		conector.conectar();
@@ -219,6 +219,24 @@ public class GestorBBDD extends Conector{
 		conector.cerrar();
 		devolverLibro.setDevuelto(0);
 		return devolverLibro;
+	}
+
+	public ArrayList<Prestamo> consultarPrestamosNoDevueltos() throws SQLException {
+		ArrayList<Prestamo> prestamos = new ArrayList<>();
+		conector.conectar();
+		PreparedStatement pSt = conector.getCon().prepareStatement("SELECT * FROM prestamos WHERE devuelto = ?");
+		pSt.setInt(1, 1);
+		ResultSet resultado = pSt.executeQuery();
+		while(resultado.next()) {
+			Prestamo prestamo = new Prestamo(); 
+			prestamo.setId_libro(resultado.getInt("id_libro"));
+			prestamo.setId_socio(resultado.getInt("id_socio"));
+			prestamo.setFecha(resultado.getDate("fecha"));
+			prestamo.setDevuelto(resultado.getInt("devuelto"));
+			prestamos.add(prestamo);
+		}
+		conector.cerrar();
+		return prestamos;
 	}
 }
 
