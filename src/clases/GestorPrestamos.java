@@ -1,6 +1,5 @@
 package clases;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Scanner;
@@ -34,7 +33,13 @@ public class GestorPrestamos {
 				
 				break;
 			case Menu.DEVOLVER_LIBRO:
-				System.out.println("Proximamente...");
+				Prestamo devolverLibro = gestorbbdd.getPrestamo(FormularioDeDatos.pedirIdLibro(scan));
+				if(devolverLibro.isDevuelto() == true) {
+					Visor.mostrarMensaje("\u001B[31mEste libro no se puede delvolver!\n\u001B[30m");
+				}else {
+					devolverLibro = gestorbbdd.devolverLibro(devolverLibro);
+					Visor.mostrarMensaje("\u001B[32mEl libro ha sido devuelto con exito!\n\u001B[30m");
+				}
 				
 				break;
 			case Menu.CONSULTAR_PRETAMOS_NO_DEVUELTOS:

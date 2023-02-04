@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public class GestorBBDD extends Conector{
@@ -204,6 +203,16 @@ public class GestorBBDD extends Conector{
 		prestamo.setBoolean(4, false);
 		prestamo.execute();
 		conector.cerrar();
+	}
+
+	public Prestamo devolverLibro(Prestamo devolverLibro) throws SQLException {
+		conector.conectar();
+		PreparedStatement devolverLibroPS = conector.getCon().prepareStatement("UPDATE prestamos SET devuelto=? WHERE id_libro = ?;");
+		devolverLibroPS.setBoolean(1, true);
+		devolverLibroPS.setInt(2, devolverLibro.getId_libro());
+		conector.cerrar();
+		devolverLibro.setDevuelto(true);
+		return devolverLibro;
 	}
 }
 

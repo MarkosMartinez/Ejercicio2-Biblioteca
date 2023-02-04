@@ -1,6 +1,5 @@
 package clases;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
