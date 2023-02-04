@@ -2,6 +2,7 @@ package clases;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GestorPrestamos {
@@ -43,11 +44,19 @@ public class GestorPrestamos {
 				
 				break;
 			case Menu.CONSULTAR_PRETAMOS_NO_DEVUELTOS:
-				Visor.mostrarPrestamosNoDevueltos(gestorbbdd.consultarPrestamosNoDevueltos());
+				Visor.mostrarPrestamos(gestorbbdd.consultarPrestamosNoDevueltos());
 
 				break;
 			case Menu.CONSULTAR_PRESTAMOS_SOCIOS:
-				System.out.println("Proximamente...");
+				int consultarPrestamosIdSocio = FormularioDeDatos.pedirIdSocio(scan);
+				boolean tienePrestamos = gestorbbdd.tienePrestamos(consultarPrestamosIdSocio);
+				
+				if(!tienePrestamos) {
+					Visor.mostrarMensaje("\u001B[31mEste socio No tiene ningun prestamo!\n\u001B[30m");
+				}else {
+					ArrayList<Prestamo> prestamosDelSocio = gestorbbdd.consultarPrestamosSocios(consultarPrestamosIdSocio);
+					Visor.mostrarPrestamos(prestamosDelSocio);
+				}
 				
 				break;
 			case Menu.CONSULTAR_DISPONIBILIDAD:

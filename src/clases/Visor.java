@@ -28,10 +28,10 @@ public class Visor {
 		}
 	}
 	
-	public static void mostrarPrestamosNoDevueltos(ArrayList<Prestamo> prestamosNoDevueltos) {
-		System.out.println("Esta es la lista de prestamos no devueltos en nuestra DB: ");
+	public static void mostrarPrestamos(ArrayList<Prestamo> prestamosNoDevueltos) {
+		System.out.println("Esta es la lista de prestamos en nuestra DB: ");
 		for (Prestamo prestamo : prestamosNoDevueltos) {
-			System.out.println("ID del libro: " + prestamo.getId_libro() + "\nID del socio: " + prestamo.getId_socio() + "\nFecha del prestamo: " + prestamo.getFecha() + "\nDevuelto: No\n");
+			System.out.println("ID del libro: " + prestamo.getId_libro() + "\nID del socio: " + prestamo.getId_socio() + "\nFecha del prestamo: " + prestamo.getFecha() + "\nDevuelto: " + (prestamo.getDevuelto() == 1 ? "No":"Si") + "\n");
 		}
 	}
 	

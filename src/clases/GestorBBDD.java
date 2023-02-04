@@ -238,5 +238,39 @@ public class GestorBBDD extends Conector{
 		conector.cerrar();
 		return prestamos;
 	}
+	
+	public boolean tienePrestamos(int consultarPrestamosIdSocio) throws SQLException {
+		boolean prestamos = false;
+		conector.conectar();
+		PreparedStatement pSt = conector.getCon().prepareStatement("SELECT * FROM prestamos WHERE id_socio = ?");
+		pSt.setInt(1, consultarPrestamosIdSocio);
+		ResultSet resultado = pSt.executeQuery();
+		if(resultado.next()) {
+			Prestamo prestamo = new Prestamo(); 
+			prestamo.setId_libro(resultado.getInt("id_libro"));
+			prestamos = true;
+		}
+		conector.cerrar();
+		return prestamos;
+	}
+
+	public ArrayList<Prestamo> consultarPrestamosSocios(int consultarPrestamosIdSocio) throws SQLException {
+		ArrayList<Prestamo> prestamos = new ArrayList<>();
+		conector.conectar();
+		PreparedStatement pSt = conector.getCon().prepareStatement("SELECT * FROM prestamos WHERE id_socio = ?");
+		pSt.setInt(1, consultarPrestamosIdSocio);
+		ResultSet resultado = pSt.executeQuery();
+		while(resultado.next()) {
+			Prestamo prestamo = new Prestamo(); 
+			prestamo.setId_libro(resultado.getInt("id_libro"));
+			prestamo.setId_socio(resultado.getInt("id_socio"));
+			prestamo.setFecha(resultado.getDate("fecha"));
+			prestamo.setDevuelto(resultado.getInt("devuelto"));
+			prestamos.add(prestamo);
+		}
+		conector.cerrar();
+		return prestamos;
+	}
+
 }
 
