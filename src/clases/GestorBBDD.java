@@ -203,7 +203,6 @@ public class GestorBBDD extends Conector{
 		PreparedStatement prestamo = conector.getCon().prepareStatement("INSERT INTO prestamos (id_libro, id_socio, fecha, devuelto) VALUES (?,?,?,?);");
 		prestamo.setInt(1, prestamoLibro.getId());
 		prestamo.setInt(2, prestamoSocio.getId());
-		System.out.println("Fecha recivida: " + prestamo2.getFecha());
 		prestamo.setDate(3, new Date(prestamo2.getFecha().getTime()));
 		prestamo.setInt(4, 1);
 		prestamo.execute();

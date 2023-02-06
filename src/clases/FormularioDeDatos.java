@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class FormularioDeDatos {
 
 	
-	//LIBROS
+	//LIBROS -------------------------------------------
 	public static Libro pedirDatosLibro(Scanner scan) {
 		Libro libro = new Libro();
 		System.out.println("Escribe el titulo del libro: ");
@@ -51,7 +51,7 @@ public class FormularioDeDatos {
 	
 	
 	
-	//SOCIOS
+	//SOCIOS -------------------------------------------
 	public static Socio pedirDatosSocio(Scanner scan) {
 		Socio socio = new Socio();
 		System.out.println("Escribe el nombre del socio: ");
@@ -113,6 +113,7 @@ public class FormularioDeDatos {
 		return socio;
 	}
 
+	//PRESTAMOS ---------------------------------------------------------------------------------------
 	public static Prestamo pedirFechaPrestamo(Scanner scan, Prestamo prestamo) throws ParseException {
 		System.out.println("Escribe la fecha del prestamo (dd/MM/yyyy)");
 		SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
