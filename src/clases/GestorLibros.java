@@ -18,13 +18,13 @@ public class GestorLibros {
 			case Menu.INSERTAR_LIBRO:
 				Libro libro = FormularioDeDatos.pedirDatosLibro(scan);
 				gestorbbdd.insertarLibro(libro);
-				Visor.mostrarMensaje("\u001B[32mLibro insertado!\u001B[30m\n");
+				Visor.mostrarMensaje(Colores.VERDE + "Libro insertado!\n" + Colores.NEGRO);
 				
 				break;
 			case Menu.ELIMINAR_LIBRO:
 				int idDelete = FormularioDeDatos.pedirIdLibro(scan);
 				gestorbbdd.eliminarLibro(idDelete);
-				Visor.mostrarMensaje("\u001B[32mLibro eliminado!\u001B[30m\n");
+				Visor.mostrarMensaje(Colores.VERDE + "Libro eliminado!\n" + Colores.NEGRO);
 				
 				break;
 			case Menu.MODIFICAR_LIBRO:
@@ -32,7 +32,7 @@ public class GestorLibros {
 				if(libroModifi.getId() != -1) {
 				libroModifi = FormularioDeDatos.modificarDatosLibro(libroModifi, scan);
 				gestorbbdd.modificarLibro(libroModifi);
-				Visor.mostrarMensaje("\u001B[32mLibro modificado!\u001B[30m\n");
+				Visor.mostrarMensaje(Colores.VERDE + "Libro modificado!\n" + Colores.NEGRO);
 			}
 
 				break;
@@ -43,7 +43,7 @@ public class GestorLibros {
 			case Menu.SALIR:
 				break;
 			default:
-				System.out.println("\u001B[31mOpcion no valida!\nIntentalo de nuevo.\u001B[30m");
+				System.out.println(Colores.ROJO + "Opcion no valida!\nIntentalo de nuevo." + Colores.NEGRO);
 				break;
 			}
 			

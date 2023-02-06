@@ -31,7 +31,7 @@ public void run() throws SQLException, ParseException{
 			System.out.println("\nAgur!");
 			break;
 		default:
-			System.out.println("\u001B[31mOpcion no valida!\nIntentalo de nuevo.\u001B[30m");
+			System.out.println(Colores.ROJO + "Opcion no valida!\nIntentalo de nuevo." + Colores.NEGRO);
 		}
 
 	} while (opcion_menu != Menu.SALIR);

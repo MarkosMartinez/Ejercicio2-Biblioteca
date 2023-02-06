@@ -19,7 +19,7 @@ public class GestorPrestamos {
 			case Menu.REALIZAR_PRESTAMO:
 				Prestamo realizarPrestamo = gestorbbdd.getPrestamo(FormularioDeDatos.pedirIdLibro(scan));
 				if(realizarPrestamo.getDevuelto() == 1) {
-					Visor.mostrarMensaje("\u001B[31mEl libro ya esta en un prestamo!\n\u001B[30m");
+					Visor.mostrarMensaje(Colores.ROJO + "El libro ya esta en un prestamo!\n" + Colores.NEGRO);
 				}else {
 					
 					Prestamo prestamo = new Prestamo();
@@ -28,7 +28,7 @@ public class GestorPrestamos {
 					if(prestamoSocio.getId() != -1) {
 					prestamo = FormularioDeDatos.pedirFechaPrestamo(scan, prestamo);
 					gestorbbdd.realizarPrestamo(prestamoLibro, prestamoSocio, prestamo);
-					Visor.mostrarMensaje("\u001B[32mPrestamo realizado con exito!\n\u001B[30m");
+					Visor.mostrarMensaje(Colores.VERDE + "Prestamo realizado con exito!\n" + Colores.NEGRO);
 					}
 				}
 				
@@ -36,10 +36,10 @@ public class GestorPrestamos {
 			case Menu.DEVOLVER_LIBRO:
 				Prestamo devolverLibro = gestorbbdd.getPrestamo(FormularioDeDatos.pedirIdLibro(scan));
 				if(devolverLibro.getDevuelto() == 0) {
-					Visor.mostrarMensaje("\u001B[31mEste libro no se puede delvolver!\n\u001B[30m");
+					Visor.mostrarMensaje(Colores.ROJO + "Este libro no se puede delvolver!\n" + Colores.NEGRO);
 				}else {
 					devolverLibro = gestorbbdd.devolverLibro(devolverLibro);
-					Visor.mostrarMensaje("\u001B[32mEl libro ha sido devuelto con exito!\n\u001B[30m");
+					Visor.mostrarMensaje(Colores.VERDE + "El libro ha sido devuelto con exito!\n" + Colores.NEGRO);
 				}
 				
 				break;
@@ -52,7 +52,7 @@ public class GestorPrestamos {
 				boolean tienePrestamos = gestorbbdd.tienePrestamos(consultarPrestamosIdSocio);
 				
 				if(!tienePrestamos) {
-					Visor.mostrarMensaje("\u001B[31mEste socio No tiene ningun prestamo!\n\u001B[30m");
+					Visor.mostrarMensaje(Colores.ROJO + "Este socio No tiene ningun prestamo!\n" + Colores.NEGRO);
 				}else {
 					ArrayList<Prestamo> prestamosDelSocio = gestorbbdd.consultarPrestamosSocios(consultarPrestamosIdSocio);
 					Visor.mostrarPrestamos(prestamosDelSocio);
@@ -62,16 +62,16 @@ public class GestorPrestamos {
 			case Menu.CONSULTAR_DISPONIBILIDAD:
 				Prestamo consultaPrestamo = gestorbbdd.getPrestamo(FormularioDeDatos.pedirIdLibro(scan));
 				if(consultaPrestamo.getDevuelto() != 1) {
-					Visor.mostrarMensaje("\u001B[32mEl libro esta disponible!\n\u001B[30m");
+					Visor.mostrarMensaje(Colores.VERDE + "El libro esta disponible!\n" + Colores.NEGRO);
 				}else {
-					Visor.mostrarMensaje("\u001B[31mEl libro NO esta disponible!\n\u001B[30m");
+					Visor.mostrarMensaje(Colores.ROJO + "El libro NO esta disponible!\n" + Colores.NEGRO);
 				}
 				
 				break;
 			case Menu.SALIR:
 				break;
 			default:
-				System.out.println("\u001B[31mOpcion no valida!\nIntentalo de nuevo.\u001B[30m");
+				System.out.println(Colores.ROJO + "Opcion no valida!\nIntentalo de nuevo." + Colores.NEGRO);
 				break;
 			}
 			
